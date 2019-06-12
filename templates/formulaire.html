@@ -5,14 +5,14 @@
 <html>
 
 <head>
-  <title>Le PapyRobot</title>
-  <meta charset="utf-8" />
-  <style>
+    <title>Le PapyRobot</title>
+    <meta charset="utf-8" />
+    <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
        .one {
         border-style: solid;
-        border-width: 5px;
+        border-width: 3px;
 
         width: 50%;
         }
@@ -26,39 +26,46 @@
         margin: 100;
         padding: 0;
       }
-
+      
+    
     </style>
     
   
  
     
     <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDccQ-E6Xu1DGKn4ntp6-1oTdWnjrxzdWM&libraries=places"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDccQ-E6Xu1DGKn4ntp6-1oTdWnjrxzdWM&libraries=places"></script>
   
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
   
 </head>
 
 
 
- <body>
-  </p>
+<body>
+
+  <p class = "center">
   <h1> Papy-robot, le GrandPy Bot </h1>
   <img src="{{url_for('static', filename='images/chatbot.jpg')}}" alt = "image du robot" width=50 height=50>
-   <p>
-  </br>
-       <div id="adress" class = "div-para"></div>
+  </p>
+  <p>
+       <div id="output" class = "div-paro"></div>
+  </p>
+  <p>
+       <div id="adress" class = "div-par"></div>
+  </p>
 
-   </br>
- <div id="map"></div>
- </br>
+  <p > 
+       <div id="map"></div>
+  </p>
+  <p>
        <div id="wikipedia" class = "div-para"></div>
-
-   </br>
+  </p>
+   
   <form action = "" method="post" >
       
 
@@ -71,25 +78,18 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDccQ-E6Xu1DGKn4ntp6-1oTdW
 
     </div>
   </div>
-    </form> 
-    
-
-   
-   
-    <div>
-    <footer>
+  <div>
+  <footer>
             <p>Serge NANOU  - Tous droits réservés<br />
 
             <a href="#">https://github.com/SergeNanou</a></p>
 
     </footer>
-    </div>
-    
-  
-  
-  
-   
+  </div>
+    </form> 
 
+   
+  
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

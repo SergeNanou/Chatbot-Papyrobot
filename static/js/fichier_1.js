@@ -21,6 +21,7 @@ $('#demande').keyup(function(e) {
           $('#output').addClass('one');
           $('#wikipedia').addClass('one');
           $('#adress').addClass('one');
+          
           latitude = data.lat;
           longitude = data.lng;
           place_id = data.place_id;
