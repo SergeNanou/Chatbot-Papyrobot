@@ -1,0 +1,53 @@
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <title>Le PapyRobot</title>
+
+</head>
+
+<body>
+  <form action = "" method="post" >
+  <p>
+  
+    <img src="{{url_for('static', filename='images/chatbot.jpg')}}" alt = "image du robot"
+  </p>
+  <h1> Papy-robot, le GrandPy Bot </h1>
+   <p>
+  <div class="col-lg-6">
+    <div class="form-group">
+      
+      {{la_date}}{{le_message}}
+      <textarea id="subject" name="subject" placeholder="Write something.." style="height:50px ">
+        
+      </textarea>
+    </div>
+
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+    
+    <footer>
+            <p>Serge NANOU  - Tous droits réservés<br />
+
+            <a href="#">https://github.com/SergeNanou</a></p>
+    </footer>
+    
+  </div>
+  
+  
+   </p>
+</form>        
+</body>
+
+</html>
