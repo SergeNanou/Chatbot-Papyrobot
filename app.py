@@ -22,7 +22,7 @@ def process():
 	
 	demande = request.form['demande']
 	# lastName = request.form['lastName']
-	output = "Salut GrandPy ! Est-ce que tu connais l'adresse suivante:" + demande
+	output = "Salut Poussin ton message se resume ainsi ! : je veux connaitre le lieu qui ressort de cette phrase: " + demande
 	# 	query = request.form['demande']
 	query = test_parse(demande)
 		
@@ -46,9 +46,13 @@ def process():
 	
 	wikipedia.set_lang("fr")
 	wiki = wikipedia.summary(adress, sentences=2)
-	wiki = "Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ?"+wiki
+	d = wikipedia.page(adress)
+	url = d.url
+	
+	wiki = "Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ?"+wiki+ "\n"+ "Si tu veux en savoir plus mon poussin voici le lien wikipedia: "
 	if demande:
-		return jsonify({'output':output, 'lat':lat, 'lng':lng, 'place_id':place_id,'wiki':wiki, 'adress':adress_1})
+		return jsonify({'output':output, 'lat':lat, 'lng':lng, 'place_id':place_id,'wiki':wiki, 'adress':adress_1,
+			           'url': url})
 
 # @app.route('/process_1',methods= ['GET'])
 # def index():

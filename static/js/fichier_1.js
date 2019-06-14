@@ -5,7 +5,16 @@ $(document).ready(function() {
 $('#demande').keyup(function(e) {    
    if(e.keyCode == 13) {
      
-      
+         function showLoading() {
+             $("#loading").show();
+         }
+
+         function hideLoading() {
+             $("#loading").hide();
+         }
+
+         showLoading();
+
        $.ajax({
           data : {
              demande : $('#demande').val(),
@@ -18,20 +27,24 @@ $('#demande').keyup(function(e) {
           $('#output').text(data.output).show();
           $('#wikipedia').text(data.wiki).show();
           $('#adress').text(data.adress).show();
+         
           $('#output').addClass('one');
           $('#wikipedia').addClass('one');
           $('#adress').addClass('one');
-          
+          $('#wikipedia_1').attr({href:data.url,target:'_blank'});
+          $('#wikipedia_1').text(data.url).show()
           latitude = data.lat;
           longitude = data.lng;
           place_id = data.place_id;
           wiki = data.wiki;
           adress = data.adress;
+          url = data.url;
           console.log(latitude)
           console.log(longitude)
           console.log(place_id)
           console.log(wiki)
           console.log(adress)
+          console.log(url)
 
         function initMap() {
         
@@ -66,10 +79,12 @@ $('#demande').keyup(function(e) {
       }
 
         initMap();
+        hideLoading();
+       
+})
+       .fail(function (data) { alert("Ah mon poussin tu me fais reflechir sans succès.\n Repose ta question en raffinant et en ajoutant le pays du lieu à rechercher e"); //Ce code affichera le message d'erreur, ici Message d'erreur.
+           hideLoading(); })  
       
-});
-
-      event.preventDefault();
     }
       });
 

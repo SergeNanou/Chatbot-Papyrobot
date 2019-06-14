@@ -83,7 +83,9 @@ print(k)
 def wiki(v):
 	wikipedia.set_lang("fr")
 	g=wikipedia.summary(v, sentences=1)
-	return(g)
+	d = wikipedia.page(v)
+	d = d.url
+	return(g,d)
 m = wiki(d)
 print(m)
 

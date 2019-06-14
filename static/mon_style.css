@@ -1,0 +1,81 @@
+
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       h1
+       {   
+       left:200px;
+       margin:0;
+       }
+        
+       header
+       {
+       background:#89B;
+       position: relative;
+       color:#fff;
+       }
+        
+       footer
+       {
+       background:#89B;
+       position: relative;
+       color:#fff;
+       text-align: center;
+       }
+       #demande
+       {
+
+       }
+       #logo
+       logo {
+       width: 100%;
+       height: auto;
+       }
+       .center{
+         text-align: center;
+         
+       }
+       .col-md-8, .col-sm-10 { line-height: 200px; }
+       .col-md-12 { line-height: 80px; }
+       .one {
+        border: 5px solid #777;
+        border-radius: 15px;
+        padding:0px;
+        background-color: #89B;
+        top:0px;
+        left:200px;
+        margin-left: 50px
+        width: 50%;
+        }
+      /*#map {
+        height: 50%;
+        width: 50%;
+        margin-right: : 50px
+        top:0px;
+        left:0px;*/
+
+      }
+      #textarea{
+        height: 50%;
+        width: 100%;
+        
+        top:0px;
+        left:200px;
+
+      }
+      .map-responsive {
+        overflow:hidden;
+        padding-bottom:56.25%;
+        position:relative;
+        height:0;
+      }
+
+      /*/* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 100;
+        padding: 0;
+      }
+      #loading { display:none; left:200; top:0; width:400%;padding:20px; height:400%;margin-left: auto;
+      margin-right: auto;
+       background-image:url("{{url_for('static', filename='images/transparent.png')}}"); }
+    
