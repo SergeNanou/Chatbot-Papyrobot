@@ -28,14 +28,14 @@ def process():
 		
 	search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 	details_url = "https://maps.googleapis.com/maps/api/place/details/json"
-	search_payload = {"key":Key, "query":query}
+	search_payload = {"key":ENV["MY_API_KEY"], "query":query}
 	search_req = requests.get(search_url, params = search_payload)
 	search_json = search_req.json()
 	
 	place_id = search_json["results"][0]["place_id"]
 	lat = search_json["results"][0]["geometry"]["location"]["lat"]
 	lng = search_json["results"][0]["geometry"]["location"]["lng"]
-	details_payload= {"key":Key, "placeid":place_id}
+	details_payload= {"key":ENV["MY_API_KEY"], "placeid":place_id}
 	details_resp = requests.get(details_url, params = details_payload)
 	details_json = details_resp.json()
 	adress = details_json["result"]["formatted_address"]
