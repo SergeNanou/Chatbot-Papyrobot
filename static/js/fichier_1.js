@@ -82,7 +82,7 @@ $('#demande').keyup(function(e) {
         hideLoading();
        
 })
-       .fail(function (data) { alert("Ah mon poussin tu me fais reflechir sans succès.\n Repose ta question en raffinant et en ajoutant le pays du lieu à rechercher e"); //Ce code affichera le message d'erreur, ici Message d'erreur.
+       .fail(function (data) { alert("Ah mon poussin tu me fais reflechir sans succès.\n Repose ta question  en rajoutant le pays du lieu à rechercher "); //Ce code affichera le message d'erreur, ici Message d'erreur.
            hideLoading(); })  
       
     }

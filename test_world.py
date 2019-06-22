@@ -3,15 +3,15 @@
 import regex as re
 import requests
 import wikipedia
-# test in the regex 
+# unit test for delete punctuation function 
 def reg(demande):
 	demande = demande.lower()
 	demande = re.sub(r"\p{P}+", r"", demande)
 	return(demande)
-
+# test with pytest
 def test_reg():
     assert reg('CONNAIS-TU OPENCLASSROOMS FRANCE') == 'connaistu openclassrooms france'
-
+# unit for delete stop word function 
 def sup_stop_word(demande):
 
 	demande = demande.split()
@@ -19,10 +19,12 @@ def sup_stop_word(demande):
 	k=(set(demande).difference(stop_word_fr))
 	k= list(k) 
 	return(k)
+# test with pytest
 def test_sup_stop_word():
     assert sup_stop_word('connaistu openclassrooms france') == ['openclassrooms', 'france']
 
-#first test mock in API Google Maps
+# Test mock of  API Google Maps  using mock
+
 def first_test_map(query):
 	l = {}
 	search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
@@ -64,6 +66,9 @@ def test_with_request_get_mock(monkeypatch):
 		return MockResponse()
 	monkeypatch.setattr('requests.get', mock_requests_get)
 	assert first_test_map("openclassrooms France") == result
+
+# Test mock of  API Wiki Media  using mock
+
 def wiki(v):
 	wikipedia.set_lang("fr")
 	g=wikipedia.summary(v, sentences=1)
