@@ -3,67 +3,67 @@
 
 # Import modules
 
-import requests
-from flask import Flask,request,render_template,jsonify
-import parser
-import regex as re
-import wikipedia
-from query_parser import test_parse
-from key import Key
+
+from flask import Flask, request, render_template, jsonify
+from query_parser import *
+from map import *
+from wiki import *
+
 
 # Flask app initialisation
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index_1():
-	return render_template('formulaire.html')	
+    return render_template('for_m.html')
 
 # Route create
-
-@app.route('/process',methods= ['POST'])
-
+@app.route('/process', methods=['POST'])
 def process():
-	# process to catch a user text
-	demande = request.form['demande']
-	
-	output = "Salut Poussin ton message se resume ainsi ! : je veux connaitre le lieu qui ressort de cette phrase: " + demande
-	# using parse function
-	query = test_parse(demande)
-	# using API Google Maps for search	
-	search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
-	details_url = "https://maps.googleapis.com/maps/api/place/details/json"
-	search_payload = {"key":Key, "query":query}
-	search_req = requests.get(search_url, params = search_payload)
-	search_json = search_req.json()
-	# place_id of place research
-	place_id = search_json["results"][0]["place_id"]
-	# lat of place research
-	lat = search_json["results"][0]["geometry"]["location"]["lat"]
-	# lont of place research
-	lng = search_json["results"][0]["geometry"]["location"]["lng"]
-	details_payload= {"key":Key, "placeid":place_id}
-	details_resp = requests.get(details_url, params = details_payload)
-	details_json = details_resp.json()
-	# adress of place research
-	adress = details_json["result"]["formatted_address"]
-	adress_1 = "Bien sûr mon poussin ! La voici: " + adress
-	adress = adress.split(",")
-	del adress[1]
-	adress =  re.sub(r"\p{P}+", r" ", ','.join(adress))
-	
-	wikipedia.set_lang("fr")
-	wiki = wikipedia.summary(adress, sentences=2)
-	d = wikipedia.page(adress)
-	url = d.url
-	
-	wiki = "Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ?"+wiki+ "\n"+ "Si tu veux en savoir plus mon poussin voici le lien wikipedia: "
-	if demande:
-		return jsonify({'output':output, 'lat':lat, 'lng':lng, 'place_id':place_id,'wiki':wiki, 'adress':adress_1,
-			           'url': url})
+    place_id = 'AFCCGG'
+    # process to catch a user text
+    query_0 = request.form['query']
+    output = "Salut Poussin ton message se resume ainsi ! : \
+    je veux connaitre le lieu qui ressort de cette phrase: " + query_0
+    # using parse function
+    query = text_parse(query_0)
+    # initialization for Map Class
+    m = Map_G(query)
+    # Application of method class coord_map
+    if m.coord_map() == {}:
+        return jsonify({'output': "Mon poussin tu me fais reflechir \
+                        sans succès.Ajoute le pays de ta recherche"})
+    else:
+        # recuperation of place_Id
+        place_id = m.coord_map()["place_Id"]
+        # Application of method class coord_adress
+        adress = m.coord_adress(place_id)
+        # using the second text function
+        adress_wiki = text_parse_wiki(adress)
+        # instance for Wiki class
+        wik = Wiki(adress_wiki)
+        adress_1 = "Bien sûr mon poussin ! La voici: " + adress
+        # Application of method class wiki_inf()
+        if wik.wiki_inf()['url'] == '':
+            wiki = "Mon poussin je ne me souviens plus  \
+                     de l'histoire de ce lieu"
+        else:
+            wiki = "Mais t'ai-je déjà raconté l'histoire \
+                    de ce quartier qui m'a vu en culottes \
+                    courtes ?" + wik.wiki_inf()['text'] + "\n" + \
+                    "Si tu veux en savoir plus mon poussin voici \
+                    le lien wikipedia: "
+        if query_0:
+            # sending data
+            return jsonify({'output': output,
+                            'lat': m.coord_map()["lat"],
+                            'lng': m.coord_map()["lng"],
+                            'place_id': m.coord_map()["place_Id"],
+                            'wiki': wiki, 'adress': adress_1,
+                            'url': wik.wiki_inf()['url']})
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
-
-  
+    app.run(debug=True)

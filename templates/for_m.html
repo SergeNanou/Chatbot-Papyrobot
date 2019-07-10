@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mon_style.css') }}">
+    <title>Le PapyRobot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>        
+</head>
+<body>
+    
+    <div class="container ">
+    	<div class="row">
+            <div class="col-sm-6 col-sm-offset-3 col-lg-8 col-lg-offset-2">
+                <div class="panel panel-primary">
+                    <div class="panel-heading top-bar">
+                        <p class="flotte">
+  
+                            <img src="{{url_for('static', filename='images/chatbot.jpg')}}" alt = "image du robot" width=70 height=40 id ="logo">
+                        </p>
+                        <p>
+                            <h4> Papy-robot, le GrandPy Bot map-historique</h4>
+                        </p>
+                    </div>
+                    <div class="panel-body"  style="min-height: 10; max-height: 400;">
+	                    <p class= center>
+	                       <div id="output" class = "center"></div>
+                        </p>
+                        <div id="loading" >
+                           <p><img src="{{url_for('static', filename='images/ajax-loader.gif')}}" /> Please Wait</p>
+                        </div>
+	                    <p class = center>
+	                       <div id="adress" class = "center"></div>
+                        </p>
+	                    <p> 
+                            <div id="map"  class = "center"></div>
+	                    </p>
+	                    <p class = center>
+	                       <div id="wikipedia" class = "div-para"></div>
+	                    </p>
+                        <p class="center">
+                            <a href= "" id="wikipedia_1" class = "div-para"></a>
+                        </p>
+ 
+                        <div class="input-group">
+                            <textarea placeholder="Papy-robot je souhaiterais connaitre ..." name="query" id ='query'></textarea>
+                        </div>
+                    </div>
+                    <div class="panel-footer panel-custom">
+                        <div class="container text-left">
+                            <small style="color:grey" class="copyright">Serge NANOU.All Rights Reserved.</small>
+                            <a href="https://www.facebook.com/affoumouakaserge.nanou"><i class="fa fa-facebook"></i></a>
+                            <a href="https://github.com/SergeNanou"><i class="fa fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/serge-nanou-241956103/"><i class="fa fa-linkedin"></i></a>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDccQ-E6Xu1DGKn4ntp6-1oTdWnjrxzdWM&libraries=places"></script>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <script src="{{ url_for('static', filename='js/fichier_1.js')}}"></script> 
+</body>
+</html>

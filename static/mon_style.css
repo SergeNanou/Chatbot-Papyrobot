@@ -1,42 +1,16 @@
 
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-       h1
-       {   
-       left:200px;
-       margin:0;
-       }
-        
-       header
-       {
-       background:#89B;
-       position: relative;
-       color:#fff;
-       }
-        
-       footer
-       {
-       background:#89B;
-       position: relative;
-       color:#fff;
-       text-align: center;
-       }
-       #demande
-       {
-
-       }
-       #logo
-       logo {
-       width: 100%;
-       height: auto;
-       }
-       .center{
-         text-align: center;
-         
-       }
-       .col-md-8, .col-sm-10 { line-height: 200px; }
-       .col-md-12 { line-height: 80px; }
-       .one {
+body {
+        background-image:url("images/html_back_1.png");
+        background-size: cover; 
+        }
+[class*="col"] { 
+                margin-bottom: 20px;
+                padding-bottom: 40px;
+                margin-top: 100px;
+}
+.red{color: red;}
+       
+.one {
         border: 5px solid #777;
         border-radius: 15px;
         padding:0px;
@@ -46,36 +20,55 @@
         margin-left: 50px
         width: 50%;
         }
-      /*#map {
-        height: 50%;
-        width: 50%;
-        margin-right: : 50px
-        top:0px;
-        left:0px;*/
+.panel-footer.panel-custom {
+                            background: #061D25;
+                            padding: 10px 0;
+                            }
+  .panel-footer.panel-custom a {
+                              color: #70726F;
+                              font-size: 20px;
+                              padding: 10px;
+                              border-right: 1px solid #70726F;
+                              transition: all .5s ease;
+                              }
+  .panel-footer.panel-custom a:first-child {
+                                          border-left: 1px solid #70726F;
+                                          }
+  .panel-footer.panel-custom a:hover {
+                                    color: white;
+                                    }
 
-      }
-      #textarea{
-        height: 50%;
-        width: 100%;
-        
-        top:0px;
-        left:200px;
+   
+.center{
+         text-align: center;
+         
+       }
+textarea {
+          width: 500px;
+          height: 30px;
+          }
+#loading { display:none; left:200; top:0; width:400%;padding:20px; height:400%;margin-left: auto;
+          margin-right: auto;
+        }
+#map{position:relative; margin-left:auto; margin-right:auto;height: 250px ;width:350px;}
+#query {
+        border:2px solid black;
+        border-radius: 5px;}
+.panel-body {
+              background:#DCDCDC;}
 
+.flotte {
+    float:left;
+    }
+@media (max-width:400px){
+      #map{
+            height: 175px ;
+            width:220px;
       }
-      .map-responsive {
-        overflow:hidden;
-        padding-bottom:56.25%;
-        position:relative;
-        height:0;
+}
+@media (max-width:420px){
+      textarea {
+         width: 250px;
+          height: 30px;
       }
-
-      /*/* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 100;
-        padding: 0;
-      }
-      #loading { display:none; left:200; top:0; width:400%;padding:20px; height:400%;margin-left: auto;
-      margin-right: auto;
-       background-image:url("{{url_for('static', filename='images/transparent.png')}}"); }
-    
+}

@@ -4,3 +4,7 @@ __pycache__
 .pytest_cache
 
 tests.py
+t_1.py
+formulaire.html
+chat_design.html
+
