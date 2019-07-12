@@ -10,21 +10,20 @@ from wiki import *
 # unit test for delete punctuation function
 
 
-def reg(demande):
-    demande = demande.lower()
-    demande = re.sub(r"\p{P}+", r"", demande)
-    return(demande)
-# test with pytest
-
-
 def test_reg():
-    assert reg('CONNAIS-TU OPENCLASSROOMS FRANCE') ==
-                'connaistu openclassrooms france'
+    assert reg('CONNAIS-TU OPENCLASSROOMS FRANCE') == 'connaistu openclassrooms france'
+# unit test for delete stop word
+
+
+def test_sup_stop_word():
+    assert sup_stop_word('connaistu openclassrooms france') == {'openclassrooms', 'france'}
+                
+
+# test to delete number and punctuation
 
 
 def test_text_parse_wiki():
-    assert text_parse_wiki('7 Cité Paradis, 75010 Paris, France')
-                            == " Cité Paradis  Paris"
+    assert text_parse_wiki('7 Cité Paradis, 75010 Paris, France') == " Cité Paradis  Paris"
 
 # Test mock of  API Google Maps  using mock
 # query sucess map instance for coordinates

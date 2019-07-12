@@ -16,8 +16,7 @@ def reg(query):
 
 def sup_stop_word(query):
     query = query.split()
-    k = (set(query).difference(stop_word_fr))
-    k = list(k)
+    k = set(query).difference(stop_word_fr)
     return(k)
 
 # function for parsing a user text
@@ -26,6 +25,7 @@ def sup_stop_word(query):
 def text_parse(query):
     query = reg(query)
     k = sup_stop_word(query)
+    k = list(k)
     query = re.sub(r"\p{P}+", r" ", ','.join(k))
     return(query)
 # function for parsing adress
