@@ -1,7 +1,11 @@
 
 body {
         background-image:url("images/html_back_1.png");
-        background-size: cover; 
+        background-size: cover;
+        overflow-x: hidden;
+        overflow-y: auto;
+        overflow : -moz-scrollbars-horizontal;
+
         }
 [class*="col"] { 
                 margin-bottom: 20px;
@@ -9,7 +13,7 @@ body {
                 margin-top: 100px;
 }
 .red{color: red;}
-       
+  
 .one {
         border: 5px solid #777;
         border-radius: 15px;

@@ -11,19 +11,22 @@ from wiki import *
 
 
 def test_reg():
-    assert reg('CONNAIS-TU OPENCLASSROOMS FRANCE') == 'connaistu openclassrooms france'
+    assert reg('CONNAIS-TU OPENCLASSROOMS FRANCE') \
+           == 'connaistu openclassrooms france'
 # unit test for delete stop word
 
 
 def test_sup_stop_word():
-    assert sup_stop_word('connaistu openclassrooms france') == {'openclassrooms', 'france'}
-                
+    assert sup_stop_word('connaistu openclassrooms france') \
+           == {'openclassrooms', 'france'}
+
 
 # test to delete number and punctuation
 
 
 def test_text_parse_wiki():
-    assert text_parse_wiki('7 Cité Paradis, 75010 Paris, France') == " Cité Paradis  Paris"
+    assert text_parse_wiki('7 Cité Paradis, 75010 Paris, France') \
+           == " Cité Paradis  Paris"
 
 # Test mock of  API Google Maps  using mock
 # query sucess map instance for coordinates
@@ -39,16 +42,16 @@ def test_with_request_get_mock_success(monkeypatch):
     class MockResponse:
         def json(self):
             return({
-                    "html_attributions": [],
-                                "results": [
+                   "html_attributions": [],
+                   "results": [
                     {
-                        "geometry": {
-                            "location": {
-                            "lat":  48.8748465,
-                            "lng":  2.3504873
-                    }
-                },
-                "place_id": 'ChIJIZX8lhRu5kcRGwYk8Ce3Vc8'}]})
+                     "geometry": {
+                      "location": {
+                       "lat":  48.8748465,
+                       "lng":  2.3504873
+                      }
+                     },
+                     "place_id": 'ChIJIZX8lhRu5kcRGwYk8Ce3Vc8'}]})
 
     def mock_requests_get_sucess_1(url,  params):
         return MockResponse()
@@ -64,12 +67,12 @@ def test_with_request_get_mock_success_adres(monkeypatch):
         def json(self):
             return({'html_attributions': [],
                     'result': {"formatted_address":
-                    "7 Cité Paradis, 75010 Paris, France"}})
+                               "7 Cité Paradis, 75010 Paris, France"}})
 
     def mock_requests_get_adress_succes(url,  params):
         return MockResponse()
     monkeypatch.setattr('requests.get', mock_requests_get_adress_succes)
-    assert m_success.coord_adress('ChIJIZX8lhRu5kcRGwYk8Ce3Vc8') == result
+    assert m_success.adress == result
 
 # query fail initialize for coordinates
 
@@ -82,7 +85,7 @@ def test_with_request_get_mock_fail(monkeypatch):
         def json(self):
             return({
                     "html_attributions": [],
-                                "results": []})
+                    "results": []})
 
     def mock_requests_get_fail(url, params):
         return MockResponse()
@@ -92,6 +95,7 @@ def test_with_request_get_mock_fail(monkeypatch):
 
 def test_with_request_get_mock_fail_adres(monkeypatch):
     m_fail_adres = Map_G("Openclassroom  France")
+    m_fail_adres.coord_adress('AFCCGG')
     result = ''
 
     class MockResponse:
@@ -101,7 +105,7 @@ def test_with_request_get_mock_fail_adres(monkeypatch):
     def mock_requests_get_adress_fail(url,  params):
         return MockResponse()
     monkeypatch.setattr('requests.get', mock_requests_get_adress_fail)
-    assert m_fail_adres.coord_adress('AFCCGG') == result
+    assert m_fail_adres.adress == result
 
 # Test mock of  API Wiki Media sucess
 

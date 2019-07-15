@@ -37,18 +37,21 @@ def text_parse_wiki(query):
     coma = ","
     cpt = 0
     # count coma number
-    for letter in query:
-        if letter == coma:
-            cpt = cpt + 1
-    if cpt == 2:
-        # convert query in liste
-        adress_2 = query.split(",")
-        del adress_2[2]
-        # convert query in string
-        adress_2 = re.sub(r"\p{P}+", r"", ','.join(adress_2))
-        # drop a number
-        adress_2 = re.sub(r"\d", r"", adress_2)
-    elif cpt == 1:
-        adress_2 = query.split(",")
-        adress_2 = re.sub(r"\p{P}+", r"", ','.join(adress_2))
+    if coma in query:
+        for letter in query:
+            if letter == coma:
+                cpt = cpt + 1
+            if cpt == 2:
+                # convert query in liste
+                adress_2 = query.split(",")
+                del adress_2[2]
+                # convert query in string
+                adress_2 = re.sub(r"\p{P}+", r"", ','.join(adress_2))
+                # drop a number
+                adress_2 = re.sub(r"\d", r"", adress_2)
+            elif cpt == 1:
+                adress_2 = query.split(",")
+                adress_2 = re.sub(r"\p{P}+", r"", ','.join(adress_2))
+    else:
+        adress_2 = query
     return(adress_2)

@@ -10,8 +10,9 @@ class Map_G:
     """This class represent the coordinates of lat long and adress"""
     def __init__(self, query):
         self.query = query
-
+        self.adress = 0
     # Method to take a lont and lat of the query
+
     def coord_map(self):
         coord = {}
         # Using google map place API
@@ -34,15 +35,14 @@ class Map_G:
 
     # Method to take adress of the query
     def coord_adress(self, place_id):
-        adress = 0
         # Using google map place details  API
         details_url = "https://maps.googleapis.com/maps/api/place/details/json"
         details_payload = {"key": Key, "placeid": place_id}
         details_resp = requests.get(details_url, params=details_payload)
         details_json = details_resp.json()
-        if details_json == {'html_attributions': [], 'status': 'INVALID_REQUEST'}:
-            adress = ''
+        if details_json == {'html_attributions': [],
+                            'status': 'INVALID_REQUEST'}:
+            self.adress = ''
         else:
             # adress of place research
-            adress = details_json["result"]["formatted_address"]
-        return(adress)
+            self.adress = details_json["result"]["formatted_address"]

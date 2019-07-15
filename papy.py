@@ -39,7 +39,8 @@ def process():
         # recuperation of place_Id
         place_id = m.coord_map()["place_Id"]
         # Application of method class coord_adress
-        adress = m.coord_adress(place_id)
+        m.coord_adress(place_id)
+        adress = m.adress
         # using the second text function
         adress_wiki = text_parse_wiki(adress)
         # instance for Wiki class
